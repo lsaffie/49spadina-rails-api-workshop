@@ -1,0 +1,42 @@
+== README
+
+This is a simple app that demostrates the use of the rails-api gem
+
+Thigs covered:
+
+* rails-gem
+* Token based authentication
+* Serializer (active_model_serializer)
+
+== Models
+user -> reviews
+token
+
+== Installation
+
+git clone <repo>
+cd <repo>
+bundle install
+rake db:migrate
+rails s
+
+== Usage
+
+This application is protected by a token, be sure to create a token in order to test it out
+Generate a token using the console and some seed data
+
+In rails console
+u=User.create(first_name: 'Joe', last_name: 'Doe', email: 'joe@doe.com')
+u.reviews.create(title: 'review title', body: 'description of review')
+t=Token.create
+t.token
+
+Using Postman, set the following headers
+
+Name: Authorization
+Value: <t.token>
+
+send request to the users path
+localhost:3000/users
+
+
